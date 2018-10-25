@@ -219,7 +219,7 @@ def gen_full_exp(condition):
     for i in range(len(assess3)):
         instance_entry = {'trial_number':index, 'learning_period':'target', 'block_type':'target', 
                           'train_v_assess':'assess' , 'index_of_def_var':2, 'instance':assess3[i][1],
-        'val_of_def_var_on_instance':assess3[i][1][2], 'is_cat':target[i][0], 'is_switch': 0 }
+        'val_of_def_var_on_instance':assess3[i][1][2], 'is_cat':assess3[i][0], 'is_switch': 0 }
         instances_dict[index] = instance_entry
         index += 1
     
@@ -234,10 +234,10 @@ def gen_full_exp(condition):
     # info is trial # 
     #{1:{'trial_number':1, 'learning_period', 'block_type','train_v_assess': , 'index_of_def_var', 'instance',
     #    'val_of_def_var', 'is_cat', 'is_switch', #'response', 'response_correct'}}
-    for key in range(index):
-        if instances_dict[key]:
-            print(key)
-            print(instances_dict[key])
+    #for key in range(index):
+        #if instances_dict[key]:
+           # print(key)
+            #print(instances_dict[key])
             
     # should be 240 entries in dict, last entry = 239, bc index starts at 0
     
@@ -294,10 +294,10 @@ def run_single_subj(subj_id, condition):
         
         
         subject_trial_dict[subj_id_trial_num] = inst_dict
-        print(inst_dict)
-        print(subj_id_trial_num)
+        #print(inst_dict)
+        #print(subj_id_trial_num)
         
-        print(subject_trial_dict)
+        #print(subject_trial_dict)
         
     #for key in range(240):
      #   if [key]:
@@ -317,7 +317,10 @@ def run_single_subj(subj_id, condition):
     #         inst_dict[feature_value_key] = feature_values[i]
              
              # '{first} {last}'.format(first='Hodor', last='Hodor!')
-             
+
+
+# 'feature_at_index{num}'.format(num = i)
+#              
 
              
 def run_all_subj(num_sub_per_cond, conditions =['lo_var_lo_vol', 
@@ -333,8 +336,8 @@ def run_all_subj(num_sub_per_cond, conditions =['lo_var_lo_vol',
                 cond_subj_trial_id = condition + '_' + str(j)+'_'+str(key)
                 full_experiment_d[cond_subj_trial_id] = subj_responses[key]
     
-            
-    with open('full_experiment.json', 'w') as file:
+    file_name =   "full_experiment_{n}_per_condition.json".format(n = num_sub_per_cond)      
+    with open(file_name, 'w') as file:
         json.dump(full_experiment_d, file)
     
     return(full_experiment_d)

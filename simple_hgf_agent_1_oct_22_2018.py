@@ -88,7 +88,15 @@ class category_feature_links:
                                                 kappa, omega,sig_3_k )
             
 
-
+    def get_all_dynamic_parameter_values(self).:
+        dyn_param = {}
+        dyn_param['dyn_param_0'] = self.HGF_val_list_0.get_dynamic_parameter_values()
+        dyn_param['dyn_param_1']= self.HGF_val_list_1.get_dynamic_parameter_values()
+        
+        return(dyn_param)
+    #returns the following:  
+    # dynamic_parameter_values = [mu_hat_1_k_min_1, p_e_1, precions_p_e,       
+    #                                mu_2_k_min_1, sig_2_k_min_1, mu_3_k_min_1]
 
     def get_all_link_weights(self, cat):
         if cat == 0:
